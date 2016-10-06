@@ -47,7 +47,7 @@ int main()
 
   // open the input file
   ifstream fin;
-  fin.open("/Users/ethanchiang/Desktop/dvc-schedule.txt");
+  fin.open("dvc-schedule.txt");
   try
   {
     if(!fin.good()) throw "I/O error";
@@ -82,7 +82,7 @@ int main()
     if(course.find('-') == string::npos) continue; // invalid line: no dash in course name
     const string subjectCode(course.begin(), course.begin() + course.find('-'));
 
-    if(dupCheck(term, section, termNum, seenTerm, duplication, fout)){}
+    if(dupCheck(term, section, termNum, seenTerm, duplication, fout))
       updateClass(record, subjectCode, recordIndex);
 
     count++;
@@ -158,7 +158,6 @@ bool dupCheck(const string& term, const string& section, int& termNum, StaticArr
       // add new section
       seenTerm[i].numOfSectionsSeen++;
       temp = seenTerm[i].numOfSectionsSeen;
-      fout << __LINE__ << ' ' << temp-1 << ' ' << term << endl; //cin.get();
       seenTerm[i].seenSection[temp-1] = section;
       return true;
     }
